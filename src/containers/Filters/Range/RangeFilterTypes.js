@@ -1,0 +1,1 @@
+export const SLIDER_CHANGE = 'slider_change';
