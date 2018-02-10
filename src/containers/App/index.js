@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import SideBar from '../../components/SideBar/Sidebar'
 import RangeSlider from '../Filters/Range/RangeSlider'
+import MultipleChoices from '../Filters/MultipleChoices/MultipleChoices'
 import '../../index.css'
 
 const App = () => (
@@ -12,6 +13,7 @@ const App = () => (
       <div className="row">
         <SideBar>
           <RangeSlider />
+          <MultipleChoices />
         </SideBar>
         <div className="col-sm-9">
           col 2
