@@ -13,6 +13,7 @@ const App = () => (
       <div className="row">
         <SideBar>
           <RangeSlider />
+          <br />
           <MultipleChoices />
         </SideBar>
         <div className="col-sm-9">

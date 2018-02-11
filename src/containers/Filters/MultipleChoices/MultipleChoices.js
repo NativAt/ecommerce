@@ -1,44 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectChange } from './MultipleChoicesAction';
+import { selectChange, initFilters } from './MultipleChoicesAction';
 
 class MultipleChoices extends Component {
   constructor(props) {
     super(props);
-
     this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(initFilters());
+  }  
 
   handleInputChange(event) {
     const { dispatch } = this.props;  
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    //debugger
     dispatch(selectChange(name, value));
   }
 
-  render() {
-    console.log(this.props.multiple);
-    return (
-      <form>
+  renderFilters() {
+    return this.props.multiple.filters.map(filter => {
+      return (
+        <div key={filter} >
         <label>
-        <input 
-          name="Nike"
-          type="checkbox" 
-          checked={this.props.multiple.Nike ? this.props.multiple.Nike : false }
-          onChange={this.handleInputChange} />
-            Nike
+          <input 
+            name={filter}
+            type="checkbox" 
+            checked={this.props.multiple[filter] ? this.props.multiple[filter] : false }
+            onChange={this.handleInputChange}
+            />
+            {filter}
         </label>
         <br />
-        <label>
-        <input 
-          name="Adidas"
-          type="checkbox" 
-          checked={this.props.multiple.Adidas ? this.props.multiple.Adidas : false }
-          onChange={this.handleInputChange} />
-            Adidas
-        </label>
+        </div>
+      )
+    });
+  }
+
+  render() {
+    return (
+      <form>
+        {this.renderFilters()}
       </form>
     );
   }
