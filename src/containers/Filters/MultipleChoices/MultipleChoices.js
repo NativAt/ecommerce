@@ -14,6 +14,7 @@ class MultipleChoices extends Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
+    //debugger
     dispatch(selectChange(name, value));
   }
 
@@ -25,7 +26,7 @@ class MultipleChoices extends Component {
         <input 
           name="Nike"
           type="checkbox" 
-          checked={this.props.multiple.value ? this.props.multiple.value.brand : false }
+          checked={this.props.multiple.Nike ? this.props.multiple.Nike : false }
           onChange={this.handleInputChange} />
             Nike
         </label>
@@ -34,7 +35,7 @@ class MultipleChoices extends Component {
         <input 
           name="Adidas"
           type="checkbox" 
-          checked={this.props.multiple.value ? this.props.multiple.value.brand : false }
+          checked={this.props.multiple.Adidas ? this.props.multiple.Adidas : false }
           onChange={this.handleInputChange} />
             Adidas
         </label>

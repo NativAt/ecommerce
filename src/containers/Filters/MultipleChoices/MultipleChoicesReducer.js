@@ -10,11 +10,12 @@ export default (state = [], action) => {
   console.log(action.payload);
   switch (action.type) {
     case SELECT_CHANGE:
-      return [
+      const key = Object.keys(action.payload);
+      return {
         ...state,
-       Object.keys(action.payload)
-      ]
-
+        [key]: action.payload[key]
+      }
+      
       default:
         return state
   }
