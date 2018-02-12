@@ -1,8 +1,8 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
-import { selectChange, initFilters } from './MultipleChoicesAction';
+import { selectChange, initFilters } from './RadioButtonAction';
 
-class MultipleChoices extends Component {
+class RadioButton extends Component {
   constructor(props) {
     super(props);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -16,20 +16,20 @@ class MultipleChoices extends Component {
   handleInputChange(event) {
     const { dispatch } = this.props;  
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === 'radio' ? target.checked : target.value;
     const name = target.name;
     dispatch(selectChange(name, value));
   }
 
   renderFilters() {
-    return this.props.multiple.filters.map(filter => {
+    return this.props.radio.filters.map(filter => {
       return (
         <Fragment key={filter} >
         <label>
           <input 
             name={filter}
-            type="checkbox" 
-            checked={this.props.multiple[filter] ? this.props.multiple[filter] : false }
+            type="radio" 
+            checked={this.props.radio[filter] ? this.props.radio[filter] : false }
             onChange={this.handleInputChange}
             />
             {filter}
@@ -53,7 +53,7 @@ class MultipleChoices extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { multiple: state.multiple }
+  return { radio: state.radio }
 }
 
-export default connect(mapStateToProps)(MultipleChoices);
+export default connect(mapStateToProps)(RadioButton);

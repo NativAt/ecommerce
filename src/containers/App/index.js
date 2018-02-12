@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header'
 import SideBar from '../../components/SideBar/Sidebar'
 import RangeSlider from '../Filters/Range/RangeSlider'
 import MultipleChoices from '../Filters/MultipleChoices/MultipleChoices'
+import RadioButton from '../Filters/RadioButton/RadioButton'
 import '../../index.css'
 
 const App = () => (
@@ -15,6 +16,8 @@ const App = () => (
           <RangeSlider />
           <br />
           <MultipleChoices />
+          <br />
+          <RadioButton />
         </SideBar>
         <div className="col-sm-9">
           col 2
