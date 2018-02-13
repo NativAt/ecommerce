@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
-import { selectChange, initFilters } from './RadioButtonAction';
+import { radioChange, initRadioFilters } from './RadioButtonAction';
 
 class RadioButton extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class RadioButton extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(initFilters());
+    dispatch(initRadioFilters());
   }  
 
   handleInputChange(event) {
@@ -18,11 +18,12 @@ class RadioButton extends Component {
     const target = event.target;
     const value = target.type === 'radio' ? target.checked : target.value;
     const name = target.name;
-    dispatch(selectChange(name, value));
+    dispatch(radioChange(name, value));
   }
 
   renderFilters() {
-    return this.props.radio.filters.map(filter => {
+    debugger
+    return Object.keys(this.props.radio.filters).map(filter => {
       return (
         <Fragment key={filter} >
         <label>

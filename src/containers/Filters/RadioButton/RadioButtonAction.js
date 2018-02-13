@@ -1,23 +1,23 @@
 import {
-  SELECT_CHANGE,
-  INIT_FILTERS,
+  RADIO_CHANGE,
+  INIT_RADIO_FILTERS,
 } from './RadioButtonTypes'
 
 
-export const selectChange = (name, value) => {
+export const radioChange = (name, value) => {
   return dispatch => {
     dispatch({
-      type: SELECT_CHANGE,
+      type: RADIO_CHANGE,
       payload: { [name]: value }
     })
   }
 }
 
-export const initFilters = () => {
+export const initRadioFilters = () => {
   return dispatch => {
-    const filterArr = ['Nike', 'Adidas', 'Crocs'];
+    const filterArr = { 'Nike': false, 'Adidas': false, 'Crocs': false };
     dispatch({
-      type: INIT_FILTERS,
+      type: INIT_RADIO_FILTERS,
       payload: filterArr
     })
   }
