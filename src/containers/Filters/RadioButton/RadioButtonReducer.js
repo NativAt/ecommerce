@@ -12,10 +12,9 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case RADIO_CHANGE:
       const key = Object.keys(action.payload);
-      debugger
+      state.filters[key] = action.payload[key];
       return {
         ...state,
-        [state.filters[key]]: action.payload[key]
       }
 
     case INIT_RADIO_FILTERS:

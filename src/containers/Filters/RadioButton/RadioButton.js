@@ -18,11 +18,11 @@ class RadioButton extends Component {
     const target = event.target;
     const value = target.type === 'radio' ? target.checked : target.value;
     const name = target.name;
+    dispatch(initRadioFilters());
     dispatch(radioChange(name, value));
   }
 
   renderFilters() {
-    debugger
     return Object.keys(this.props.radio.filters).map(filter => {
       return (
         <Fragment key={filter} >
@@ -30,7 +30,7 @@ class RadioButton extends Component {
           <input 
             name={filter}
             type="radio" 
-            checked={this.props.radio[filter] ? this.props.radio[filter] : false }
+            checked={this.props.radio.filters[filter] ? this.props.radio.filters[filter] : false }
             onChange={this.handleInputChange}
             />
             {filter}
