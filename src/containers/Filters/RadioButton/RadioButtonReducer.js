@@ -5,24 +5,20 @@ import {
 
 
 const initialState = {
-  filters: []
 }
 
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case RADIO_CHANGE:
       const key = Object.keys(action.payload);
-      state.filters[key] = action.payload[key];
       return {
         ...state,
+        [key]: action.payload[key],
       }
 
     case INIT_RADIO_FILTERS:
-      return {
-        ...state,
-        filters: action.payload
-      }  
-
+      return action.payload
+        
       default:
         return state
   }

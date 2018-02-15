@@ -5,10 +5,9 @@ import {
 
 
 const initialState = {
-  filters: []
 }
 
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case SELECT_CHANGE:
       const key = Object.keys(action.payload);
@@ -18,11 +17,8 @@ export default (state = initialState, action) => {
       }
 
     case INIT_FILTERS:
-      return {
-        ...state,
-        filters: action.payload
-      }  
-
+      return action.payload
+       
       default:
         return state
   }

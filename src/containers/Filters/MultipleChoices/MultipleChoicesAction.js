@@ -15,7 +15,7 @@ export const selectChange = (name, value) => {
 
 export const initFilters = () => {
   return dispatch => {
-    const filterArr = ['Nike', 'Adidas', 'Crocs'];
+    const filterArr = { 'Nike': false, 'Adidas': false, 'Crocs': false };
     dispatch({
       type: INIT_FILTERS,
       payload: filterArr

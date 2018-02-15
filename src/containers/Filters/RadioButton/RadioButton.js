@@ -23,14 +23,14 @@ class RadioButton extends Component {
   }
 
   renderFilters() {
-    return Object.keys(this.props.radio.filters).map(filter => {
+    return Object.keys(this.props.radio).map(filter => {
       return (
         <Fragment key={filter} >
         <label>
           <input 
             name={filter}
             type="radio" 
-            checked={this.props.radio.filters[filter] ? this.props.radio.filters[filter] : false }
+            checked={this.props.radio[filter] ? this.props.radio[filter] : false }
             onChange={this.handleInputChange}
             />
             {filter}

@@ -6,6 +6,7 @@ class MultipleChoices extends Component {
   constructor(props) {
     super(props);
     this.handleInputChange = this.handleInputChange.bind(this);
+    debugger
   }
 
   componentDidMount() {
@@ -22,7 +23,7 @@ class MultipleChoices extends Component {
   }
 
   renderFilters() {
-    return this.props.multiple.filters.map(filter => {
+    return Object.keys(this.props.multiple).map(filter => {
       return (
         <Fragment key={filter} >
         <label>
