@@ -1,10 +1,11 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom'
+//import { Route, Link } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import SideBar from '../../components/SideBar/Sidebar'
 import RangeSlider from '../Filters/Range/RangeSlider'
 import MultipleChoices from '../Filters/MultipleChoices/MultipleChoices'
 import RadioButton from '../Filters/RadioButton/RadioButton'
+import Flights from '../Flights/Flights'
 import '../../index.css'
 
 const App = () => (
@@ -20,7 +21,7 @@ const App = () => (
           <RadioButton />
         </SideBar>
         <div className="col-sm-9">
-          col 2
+          <Flights />
         </div>
     </div>
   </div>

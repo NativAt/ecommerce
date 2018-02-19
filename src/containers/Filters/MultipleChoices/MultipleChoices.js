@@ -6,7 +6,6 @@ class MultipleChoices extends Component {
   constructor(props) {
     super(props);
     this.handleInputChange = this.handleInputChange.bind(this);
-    debugger
   }
 
   componentDidMount() {
