@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getFlights} from './FlightsAction';
+import { sliderInit } from '../Filters/Range/RangeFilterAction';
 import Loading from 'react-loading-animation';
 
 class Flights extends Component {
@@ -13,22 +14,25 @@ class Flights extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getFlights());
+    dispatch(sliderInit(0, 300));
   }
 
   renderFlights(data) {
     const { results } = data;
     return (
       results.map(result => result.outbound.flights.map(flight => {
-        return (
-          <tr key={flight.flight_number}>
-            <td>{flight.operating_airline}</td>
-            <td>{flight.origin.airport}</td>
-            <td>{flight.destination.airport}</td>
-            <td>{flight.arrives_at}</td>
-            <td>{flight.departs_at}</td>
-            <td>{result.fare.total_price}</td>
-          </tr>
-        )
+        if (Number(this.props.slider.value) <= Number(result.fare.total_price)) {
+          return (
+            <tr key={flight.flight_number}>
+              <td>{flight.operating_airline}</td>
+              <td>{flight.origin.airport}</td>
+              <td>{flight.destination.airport}</td>
+              <td>{flight.arrives_at}</td>
+              <td>{flight.departs_at}</td>
+              <td>{result.fare.total_price}</td>
+            </tr>
+          )
+        }
       }))
     );
   }
@@ -60,7 +64,10 @@ class Flights extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { flights: state.flights }
+  return { 
+    flights: state.flights,
+    slider: state.slider
+  }
 }
 
 export default connect(mapStateToProps)(Flights);

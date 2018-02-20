@@ -1,4 +1,5 @@
 import {
+  SLIDER_INIT,
   SLIDER_CHANGE,
 } from './RangeFilterTypes';
 
@@ -10,6 +11,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case SLIDER_INIT:
+      return { 
+        ...state,
+        min_range: action.payload.minRange,
+        max_range: action.payload.maxRange
+      }
+      
     case SLIDER_CHANGE:
       return {
         ...state,
