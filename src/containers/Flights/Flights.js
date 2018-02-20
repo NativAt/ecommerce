@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getFlights} from './FlightsAction';
+import Loading from 'react-loading-animation';
 
 class Flights extends Component {
   constructor(props) {
@@ -18,7 +19,6 @@ class Flights extends Component {
     const { results } = data;
     return (
       results.map(result => result.outbound.flights.map(flight => {
-        console.log('!!!', result);
         return (
           <tr key={flight.flight_number}>
             <td>{flight.operating_airline}</td>
@@ -34,6 +34,11 @@ class Flights extends Component {
   }
 
   render() {
+    if (this.props.flights < 1) {
+      return (
+        <Loading width={200} height={200} strokeWidth={2} />
+      )
+    }
     return (
       <table className="table">
         <thead>
