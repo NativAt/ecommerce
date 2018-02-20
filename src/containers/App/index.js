@@ -20,7 +20,7 @@ const App = () => (
           <br />
           <RadioButton />
         </SideBar>
-        <div className="col-sm-9">
+        <div className="col-sm-10">
           <Flights />
         </div>
     </div>
