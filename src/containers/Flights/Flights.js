@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getFlights} from './FlightsAction';
 import { sliderInit } from '../Filters/Range/RangeFilterAction';
+import { checkboxInit } from '../Filters/MultipleChoices/MultipleChoicesAction';
 import Loading from 'react-loading-animation';
 
 class Flights extends Component {
@@ -11,17 +12,18 @@ class Flights extends Component {
     this.renderFlights = this.renderFlights.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(getFlights());
-    dispatch(sliderInit(0, 300));
+    await dispatch(getFlights());
+    dispatch(checkboxInit({ 'UX': true, 'TP': true }))
+    dispatch(sliderInit(0, 3000));
   }
 
   renderFlights(data) {
     const { results } = data;
     return (
       results.map(result => result.outbound.flights.map(flight => {
-        if (Number(this.props.slider.value) <= Number(result.fare.total_price)) {
+        if ( (Number(this.props.slider.value) >= Number(result.fare.total_price)) && this.props.multiple[flight.operating_airline]) {
           return (
             <tr key={flight.flight_number}>
               <td>{flight.operating_airline}</td>
@@ -43,6 +45,7 @@ class Flights extends Component {
         <Loading width={200} height={200} strokeWidth={2} />
       )
     }
+
     return (
       <table className="table">
         <thead>
@@ -66,7 +69,9 @@ class Flights extends Component {
 const mapStateToProps = (state) => {
   return { 
     flights: state.flights,
-    slider: state.slider
+    slider: state.slider,
+    multiple: state.multiple
+
   }
 }
 

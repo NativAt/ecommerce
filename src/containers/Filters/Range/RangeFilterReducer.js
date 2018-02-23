@@ -9,13 +9,14 @@ const initialState = {
   min_range: 0,
 }
 
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case SLIDER_INIT:
       return { 
         ...state,
         min_range: action.payload.minRange,
-        max_range: action.payload.maxRange
+        max_range: action.payload.maxRange,
+        value: action.payload.maxRange
       }
       
     case SLIDER_CHANGE:

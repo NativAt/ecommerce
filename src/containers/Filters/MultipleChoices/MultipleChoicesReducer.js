@@ -1,6 +1,6 @@
 import {
   SELECT_CHANGE,
-  INIT_FILTERS,
+  CHECKBOX_INIT,
 } from './MultipleChoicesTypes';
 
 
@@ -16,7 +16,7 @@ export default (state = {}, action) => {
         [key]: action.payload[key]
       }
 
-    case INIT_FILTERS:
+    case CHECKBOX_INIT:
       return action.payload
        
       default:

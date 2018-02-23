@@ -16,7 +16,7 @@ const App = () => (
         <SideBar>
           <RangeSlider />
           <br />
-          <MultipleChoices type="checkbox"/>
+          <MultipleChoices/>
           <br />
           <RadioButton />
         </SideBar>

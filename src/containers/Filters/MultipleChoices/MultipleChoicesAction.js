@@ -1,6 +1,6 @@
 import {
   SELECT_CHANGE,
-  INIT_FILTERS,
+  CHECKBOX_INIT,
 } from './MultipleChoicesTypes'
 
 
@@ -13,12 +13,11 @@ export const selectChange = (name, value) => {
   }
 }
 
-export const initFilters = () => {
+export const checkboxInit = (checkbox) => {
   return dispatch => {
-    const filterArr = { 'Nike': false, 'Adidas': false, 'Crocs': false };
     dispatch({
-      type: INIT_FILTERS,
-      payload: filterArr
+      type: CHECKBOX_INIT,
+      payload: checkbox,
     })
   }
 }

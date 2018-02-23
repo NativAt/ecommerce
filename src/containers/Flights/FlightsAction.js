@@ -6,7 +6,7 @@ export const getFlights = () => {
   return async function(dispatch) {
     let request;
     try {
-      request = await axios.get(`${ROOT_URL}?origin=LON&destination=DUB&departure_date=2018-03-25&return_date=2018-03-29&currency=EUR&apikey=${API_KEY}`)
+      request = await axios.get(`${ROOT_URL}?origin=LON&destination=RIO&departure_date=2018-03-25&currency=EUR&apikey=${API_KEY}`)
     } catch (err) {
       request = err;
     }
