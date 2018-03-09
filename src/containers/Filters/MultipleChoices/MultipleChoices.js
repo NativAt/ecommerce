@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
-import { selectChange, checkboxInit } from './MultipleChoicesAction';
+import { selectChange } from './MultipleChoicesAction';
 import Loading from 'react-loading-animation';
 
 class MultipleChoices extends Component {
@@ -21,7 +21,6 @@ class MultipleChoices extends Component {
   renderCheckbox(data) {
     const { meta: { carriers } = {} } =  data;
     return Object.keys(carriers).map(carrier => {
-      console.log('carrier:', carrier);
       return (
         <Fragment key={carrier}>
         <label>
@@ -70,7 +69,6 @@ class MultipleChoices extends Component {
         <h6>Carriers</h6>
         <form>
           {this.renderFilter()}
-          {/* {this.props.flights.map(this.renderCheckbox)}} */}
         </form>
       </Fragment>
     );
