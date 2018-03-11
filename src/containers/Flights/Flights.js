@@ -14,7 +14,27 @@ class Flights extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      open: false,
+      class: 'hide'
+    };
+
+    this.handleClick = this.handleClick.bind(this);
     this.renderFlights = this.renderFlights.bind(this);
+  }
+
+  handleClick() {
+    if (this.state.open) {
+      this.setState({
+        open: false,
+        class: 'hide'
+      });
+    } else {
+      this.setState({
+        open: true,
+        class: 'show'
+      }); 
+    }
   }
 
   async componentDidMount() {
@@ -31,18 +51,14 @@ class Flights extends Component {
         if ( (Number(this.props.slider.value) >= Number(result.fare.total_price)) && this.props.multiple[flight.operating_airline]) {
           const carrierLogoUrl = `${IMG_URL}/${data.meta.carriers[flight.operating_airline].logos.medium}`;
           return (
-            <Accordion title={
-              <tr key={flight.flight_number}>
-                <td><img src={carrierLogoUrl}></img></td> 
-                <td>{flight.operating_airline}</td>
-                <td>{flight.origin.airport}</td>
-                <td>{flight.destination.airport}</td>
-                <td>{flight.arrives_at}</td>
-                <td>{flight.departs_at}</td>
-                <td>{result.fare.total_price}</td>
-              </tr>
-            }>
-            Heeloooooo!
+            <Accordion flightNumber={flight.flight_number}>
+                <div className="table-cell"><img src={carrierLogoUrl}></img></div> 
+                <div className="table-cell">{flight.operating_airline}</div>
+                <div className="table-cell">{flight.origin.airport}</div>
+                <div className="table-cell">{flight.destination.airport}</div>
+                <div className="table-cell">{flight.arrives_at}</div>
+                <div className="table-cell">{flight.departs_at}</div>
+                <div className="table-cell">{result.fare.total_price}</div>
             </Accordion>
           )
         }
@@ -58,22 +74,22 @@ class Flights extends Component {
     }
 
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Airline</th>
-            <th>Carrier</th>
-            <th>Origin</th>
-            <th>Destination</th>
-            <th>Arrival</th>
-            <th>Departure</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className="table">
+        <div className="table-header-group">
+          <div className="table-row">
+            <div className="table-cell">Airline</div>
+            <div className="table-cell">Carrier</div>
+            <div className="table-cell">Origin</div>
+            <div className="table-cell">Destination</div>
+            <div className="table-cell">Arrival</div>
+            <div className="table-cell">Departure</div>
+            <div className="table-cell">Price</div>
+          </div>
+        </div>
+        <div className="table-row-group">
           {this.props.flights.map(this.renderFlights)}
-        </tbody>
-      </table>
+        </div>
+      </div>
     )
   }
 }
