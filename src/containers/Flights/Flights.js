@@ -7,6 +7,7 @@ import { checkboxInit } from '../Filters/MultipleChoices/MultipleChoicesAction';
 import Accordion from '../Accordion/Accordion';
 import Loading from 'react-loading-animation';
 import { IMG_URL } from '../../config';
+import './Flights.scss';
 
  {/* <TableRow data={results} IMG_URL={IMG_URL} /> */}
 
@@ -51,14 +52,14 @@ class Flights extends Component {
         if ( (Number(this.props.slider.value) >= Number(result.fare.total_price)) && this.props.multiple[flight.operating_airline]) {
           const carrierLogoUrl = `${IMG_URL}/${data.meta.carriers[flight.operating_airline].logos.medium}`;
           return (
-            <Accordion flightNumber={flight.flight_number}>
-                <div className="table-cell"><img src={carrierLogoUrl}></img></div> 
-                <div className="table-cell">{flight.operating_airline}</div>
-                <div className="table-cell">{flight.origin.airport}</div>
-                <div className="table-cell">{flight.destination.airport}</div>
-                <div className="table-cell">{flight.arrives_at}</div>
-                <div className="table-cell">{flight.departs_at}</div>
-                <div className="table-cell">{result.fare.total_price}</div>
+            <Accordion bookingInfo={flight.booking_info}>
+                <div className="column"><img src={carrierLogoUrl}></img></div> 
+                <div className="column">{flight.operating_airline}</div>
+                <div className="column">{flight.origin.airport}</div>
+                <div className="column">{flight.destination.airport}</div>
+                <div className="column">{flight.arrives_at}</div>
+                <div className="column">{flight.departs_at}</div>
+                <div className="column">${result.fare.total_price}</div>
             </Accordion>
           )
         }
@@ -74,21 +75,17 @@ class Flights extends Component {
     }
 
     return (
-      <div className="table">
-        <div className="table-header-group">
-          <div className="table-row">
-            <div className="table-cell">Airline</div>
-            <div className="table-cell">Carrier</div>
-            <div className="table-cell">Origin</div>
-            <div className="table-cell">Destination</div>
-            <div className="table-cell">Arrival</div>
-            <div className="table-cell">Departure</div>
-            <div className="table-cell">Price</div>
-          </div>
+      <div>
+        <div className="box">
+          <div className="column">Airline</div>
+          <div className="column">Carrier</div>
+          <div className="column">Origin</div>
+          <div className="column">Destination</div>
+          <div className="column">Arrival</div>
+          <div className="column">Departure</div>
+          <div className="column">Price</div>
         </div>
-        <div className="table-row-group">
-          {this.props.flights.map(this.renderFlights)}
-        </div>
+        {this.props.flights.map(this.renderFlights)}
       </div>
     )
   }

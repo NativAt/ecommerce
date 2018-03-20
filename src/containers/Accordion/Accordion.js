@@ -44,11 +44,12 @@ class Accordion extends Component {
   render() {
     return (
       <Fragment>
-        <div className="table-row" onClick={this.handleClick} key={this.props.flightNumber}>
+        <div className="box" onClick={this.handleClick} key={this.props.flightNumber}>
           {this.props.children}
         </div>
-        <div className="table-row" className={this.state.class}>
-          <div className="table-cell">Remaining Seats: {9}</div>
+        <div className={`box-2  ${this.state.class}`}>
+          <div className="column-2">Remaining Seats: {this.props.bookingInfo.seats_remaining}</div>
+          <div className="column-2">Travel Class: {this.props.bookingInfo.travel_class}</div>
         </div>
       </Fragment>
     );

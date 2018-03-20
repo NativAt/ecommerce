@@ -125,31 +125,30 @@ body {
 }
 
 .hide {
-  display: none;
+  height: 0;
+  border-bottom: 0;
+  overflow: hidden;
+  transition: all .2s ease-in;
+  //display: none;
 }
 
 .show {
-  display: block;
+  // display: block;
+  height: 6em;
+  border-bottom: 1px solid #dfdfdf;
+  transition: all .2s ease-in;
 }
 
-.table-cell {
-  display: table-cell;
-  border: 1px;
-  padding: 3px 10px;
+.column-2 {
+  // border: 1px solid;
+  // padding-left: 1em;
+  // padding-right: 1em;
+  flex-grow: 1;
 }
 
-.table-row {
-  display: table-row;
-}
-
-.table-row-group {
-  display: table-row-group;
-}
-
-.table-header-group {
-  display: table-header-group;
-}
-
-.table {
-  display: table;
+.box-2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }

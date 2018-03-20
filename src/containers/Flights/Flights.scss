@@ -1,0 +1,15 @@
+.box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;  
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.column {
+  // border: 1px solid;
+  // padding-left: 1em;
+  // padding-right: 1em;
+  width: 10%;
+  flex-grow: 1;
+}
