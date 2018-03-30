@@ -1,5 +1,4 @@
 import React from 'react';
-//import { Route, Link } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import SideBar from '../../components/SideBar/Sidebar'
 import RangeSlider from '../Filters/Range/RangeSlider'
@@ -20,7 +19,7 @@ const App = () => (
           <br />
           <RadioButton />
         </SideBar>
-        <div className="col-sm-10">
+        <div className="col-md-10">
           <Flights />
         </div>
     </div>

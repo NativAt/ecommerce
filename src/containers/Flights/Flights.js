@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import TableRow from '../../components/Semantic/TableRow/TableRow';
 import { getFlights} from './FlightsAction';
 import { sliderInit } from '../Filters/Range/RangeFilterAction';
 import { checkboxInit } from '../Filters/MultipleChoices/MultipleChoicesAction';
@@ -9,7 +8,6 @@ import Loading from 'react-loading-animation';
 import { IMG_URL } from '../../config';
 import './Flights.scss';
 
- {/* <TableRow data={results} IMG_URL={IMG_URL} /> */}
 
 class Flights extends Component {
   constructor(props) {
@@ -42,7 +40,7 @@ class Flights extends Component {
     const { dispatch } = this.props;
     await dispatch(getFlights());
     dispatch(checkboxInit({ 'UX': true, 'TP': true }))
-    dispatch(sliderInit(0, 3000));
+    dispatch(sliderInit(0, 4000));
   }
 
   renderFlights(data) {

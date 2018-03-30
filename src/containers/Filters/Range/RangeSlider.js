@@ -15,20 +15,13 @@ class RangeSlider extends Component {
   }
 
   render() {
-    // if (!this.props.slider) {
-    //   return (
-    //    <div>
-    //   </div>
-    //   )
-    // }
-
     const { max_range, min_range, value } = this.props.slider;
     return (
       <div>
         <h6>Price</h6>
         <div className="slidecontainer">
           {min_range}
-          <input onChange={this.onChange} type="range" min={min_range} max={max_range} value={value} className="slider" id="myRange" />
+          <input onChange={this.onChange} type="range" min={min_range} max={max_range} value={value} className="slider" />
           {value}
         </div>
       </div>

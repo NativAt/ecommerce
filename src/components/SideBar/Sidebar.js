@@ -3,7 +3,7 @@ import './SideBar.css';
 
 const SideBar = (props) => {
   return (
-    <div className="col-sm-2 sidebar">
+    <div className="col-md-2 sidebar">
       {props.children}
     </div>
   )
