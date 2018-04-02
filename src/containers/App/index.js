@@ -26,13 +26,4 @@ const App = () => (
   </div>
 )
 
-export default App
-
-
-{/* <header>
-        <Link to="/">Home</Link>
-      </header>
-
-      <main>
-        <Route exact path="/" />
-      </main> */}
+export default App;

@@ -18,8 +18,8 @@ render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
-        <Route exact  path="/search" component={Search} />
-        <Route path="/home" component={App} />
+        <Route exact  path="/" component={Search} />
+        <Route path="/flights" component={App} />
       </div>  
     </ConnectedRouter>
   </Provider>,
