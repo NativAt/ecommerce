@@ -3,32 +3,20 @@ import { connect } from 'react-redux';
 import './Search.scss';
 
 const Search = () => (
-  <div className="container">
-    <div className="row align-items-center">
-      <div className="col-md-6">
-        <div className="card card-block">
-        Center
+  <div className="container-fluid wrapper">
+      <div className="row align-items-center pos">
+        <div className="col-md-3">
+          <div className="card card-block">
+          Center
+          </div>
         </div>
-      </div>
-      <div className="col-md-6">
-        <div className="card card-inverse card-danger">
-        Taller
+        <div className="col-md-3">
+          <div className="card card-inverse card-danger">
+          Taller
+          </div>
         </div>
       </div>
     </div>
-  </div>
 )
 
-export default Search
-
-
-// class Search extends Component {
-
-//   render() {
-//     return (
-//       <div>Hello world!</div>
-//     )
-//   }
-// }
-
-// export default Search;
+export default Search;
