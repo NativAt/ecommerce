@@ -13,28 +13,9 @@ class Flights extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      open: false,
-      class: 'hide'
-    };
-
-    this.handleClick = this.handleClick.bind(this);
     this.renderFlights = this.renderFlights.bind(this);
   }
 
-  handleClick() {
-    if (this.state.open) {
-      this.setState({
-        open: false,
-        class: 'hide'
-      });
-    } else {
-      this.setState({
-        open: true,
-        class: 'show'
-      }); 
-    }
-  }
 
   async componentDidMount() {
     const { dispatch } = this.props;
